@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+
+    <title>Ted Talk Finder and Recommender</title>
+
+  </head>
+
+
+  <body>
+    <center>
+    <img style="height:277px;" src="http://www.hcpl.net/sites/default/files/TED5.jpg">
+    <!img src="https://09c449efca3bbeb52dcea716-ddjaey2ypcfdo.netdna-ssl.com/wp-content/uploads/2017/03/TED.gif">
+
+
+    <h1> <p>Ted Talk Recommender</p></h1>
+
+    <h3> <p>Please enter Ted Talk Title or Keywords</p></h3>
+
+    <input style="height:40px;font-size:16pt;" type="text" id="TedTalkTitle"></input>
+    <button style="height:40px;font-size:12pt;"id="button" onclick="getRecs()">Submit</button>
+    <h1><p><div id="yours"> </div></p></h1>
+    <h2><p>Topic:<div id="topicID"></div></p></h2>
+    <h3><a href="url" id="link1">  </a></h3>
+    <br>
+    <h2><p>You will defintily enjoy: <div id="output"></div></p></h2>
+
+    <br>
+    <h3><a href="url" id="link2">  </a>
+    <br>
+    <br>
+    <a href="url" id="link3"> </a>
+    <br>
+    <br>
+    <a href="url" id="link4">  </a>
+    <br>
+    <br>
+    <a href="url" id="link5">  </a>
+    <br>
+    <br>
+    <a href="url" id="link6">
+    <br>
+    <br>
+    <a href="url" id="link7">  </a>
+    <br>
+    <br>
+    <a href="url" id="link8">  </a>
+    <br>
+    <br>
+    <a href="url" id="link9">  </a>
+    <br>
+    <br>
+    <a href="url" id="link10">  </a>  </a></h3>
+
+  </center>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script>
+
+  function getRecs(){
+    var talkID =document.getElementById("TedTalkTitle").value;
+    $.ajax({
+      type: "POST",
+      contentType: "application/json; charset=utf-8",
+      url: "/ted",
+      dataType: "json",
+      async: true,
+      data: JSON.stringify(talkID),
+      success: function (results) {
+
+        document.getElementById("link1").href = results[0]
+        document.getElementById("link1").textContent= results[0]
+        document.getElementById("link2").href = results[1]
+        document.getElementById("link2").textContent= results[1]
+        document.getElementById("link3").href = results[2]
+        document.getElementById("link3").textContent= results[2]
+        document.getElementById("link4").href = results[3]
+        document.getElementById("link4").textContent= results[3]
+        document.getElementById("link5").href = results[4]
+        document.getElementById("link5").textContent= results[4]
+        document.getElementById("link6").href = results[5]
+        document.getElementById("link6").textContent= results[5]
+        document.getElementById("link7").href = results[6]
+        document.getElementById("link7").textContent= results[6]
+        document.getElementById("link8").href = results[6]
+        document.getElementById("link8").textContent= results[6]
+        document.getElementById("link8").href = results[7]
+        document.getElementById("link8").textContent= results[7]
+        document.getElementById("link9").href = results[8]
+        document.getElementById("link9").textContent= results[8]
+        document.getElementById("link10").href = results[9]
+        document.getElementById("link10").textContent= results[9]
+      },
+      error: function (results) {
+      },
+    })
+  }
+  </script>
+  </body>
+</html>
